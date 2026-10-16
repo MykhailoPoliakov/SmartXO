@@ -1,4 +1,4 @@
-### Simple tic-tac-toe game with:
-- `autoplay` (bot designed to play the best move)
-- `undo` 
-- `reset`
+### Simple tic-tac-toe simulator with:
+- `autoplay` *plays the best move*
+- `undo` *undoes last move*
+- `reset` *resets the board*

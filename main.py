@@ -66,7 +66,7 @@ def main():
         if inp.lower()[0] in ['z']:
             if history:
                 game = history.pop()
-                comment = "Un-done!"
+                comment = "Undone!"
             else:
                 comment = ""
             continue
