@@ -74,7 +74,7 @@ def main():
         if result != None:
             continue
 
-        if inp.lower()[0] in ['b']:
+        if inp.lower()[0] in ['a']:
             inp = str(autoplay(game.board, game.player) + 1)
 
         try:

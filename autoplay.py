@@ -6,6 +6,7 @@ from board import Board, Square
 def autoplay(board: Board, player: Player) -> int:
     lines: list = [(0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (2,4,6), (0,4,8)]
     clock: list = [0, 1, 2, 5, 8, 7, 6, 3,   0, 1, 2, 5, 8, 7, 6, 3]
+    corners: list = [board[0], board[2], board[8], board[6]]
 
     pl_sq = Square.O if player == Player.O else Square.X
     op_sq = Square.O if player != Player.O else Square.X
@@ -42,20 +43,20 @@ def autoplay(board: Board, player: Player) -> int:
     # third move
     if board.count(op_sq) == 1 and board.count(pl_sq) == 1:
         if board[4] == pl_sq:
-            if op_sq in [board[0], board[2], board[8], board[6]]:
+            if op_sq in corners:
                 return clock[clock.index(board.index(op_sq)) + 4]
             else:
                 return clock[clock.index(board.index(op_sq)) + 3]
         else:
-            if op_sq in [board[0], board[2], board[8], board[6]]:
-                return clock[clock.index(board.index(pl_sq)) + 3]
+            if pl_sq in corners:
+                return clock[clock.index(board.index(pl_sq)) + 2]
             else:
-                return clock[clock.index(board.index(pl_sq)) + 3]
+                return clock[clock.index(board.index(pl_sq)) + 1]
 
 
     # forth move (faced position)
     if board.count(op_sq) == 2 and board.count(pl_sq) == 1:
-        if op_sq in [board[0], board[2], board[8], board[6]]:
+        if op_sq in corners:
             return clock[clock.index(board.index(pl_sq)) + 2]
         else:
             return clock[clock.index(board.index(pl_sq)) + 3]

@@ -22,11 +22,11 @@ class Board(list[Square]):
     def print(self):
         count = 1
 
-        first_stat = ["exit - 'q'", "reset - 'r'", ""]
-        second_stat = ["undo - 'z'", "autoplay - 'b'", ""]
+        first_stat = ["exit     - 'q'", "reset    - 'r'"]
+        second_stat = ["undo     - 'z'", "autoplay - 'a'"]
 
 
-        print("-------------")
+        print("┌───┬───┬───┐")
         for i in range(3):
             for j in range(3):
                 element: str
@@ -37,8 +37,11 @@ class Board(list[Square]):
                         element = "O" 
                     case Square.X:  
                         element = "X" 
-                print(f"| {element} ", end='')
-            print(f"|     {first_stat[i]}\n--{count}---{count+1}---{count+2}--     {second_stat[i]}")
+                print(f"│ {element} ", end='')
+            if i < 2:
+                print(f"│     {first_stat[i]}\n├─{count}─┼─{count+1}─┼─{count+2}─┤     {second_stat[i]}")
+            else:
+                print(f"│\n└─{count}─┴─{count+1}─┴─{count+2}─┘")
             count += 3
 
 
