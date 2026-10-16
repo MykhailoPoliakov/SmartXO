@@ -87,20 +87,22 @@ def main():
             comment = "Invalid input! Enter number 1-9"
             continue
 
-        # make a move        
+        # if square is taken
         square = Square.O if game.player == Player.O else Square.X
         if game.board.validate(num, square):
-            comment = ""
-            # add old version to the history
-            history.append(deepcopy(game))
-
-            # play the move
-            game.board.play(num, square)
-            game.player = game.player.switch()
-        else:
             comment = "Square is taken. Try again"
+            continue
 
+
+        comment = ""
+        # add old version to the history
+        history.append(deepcopy(game))
+
+        # play the move
+        game.board.play(num, square)
+        game.player = game.player.switch()
             
+
 
 if __name__ == "__main__":
     main()
