@@ -89,7 +89,7 @@ def main():
 
         # if square is taken
         square = Square.O if game.player == Player.O else Square.X
-        if game.board.validate(num, square):
+        if not game.board.validate(num, square):
             comment = "Square is taken. Try again"
             continue
 
